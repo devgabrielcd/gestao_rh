@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block main %}
+    <br>
+    <div class="row">
+        <div class="col">
+            <div class="card">
+              <div class="card-body">
+                <div class="d-flex justify-content-center">
+                    <h4><a href="{% url 'list_funcionario' %}">Empregados</a></h4>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card">
+              <div class="card-body">
+                <div class="d-flex justify-content-center">
+                    <h4><a href="{% url 'list_hora_extra' %}">Banco de Horas</a></h4>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card">
+              <div class="card-body">
+                  <div class="d-flex justify-content-center">
+                    <h4><a href="{% url 'list_hora_extra' %}">Documentos</a></h4>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+<br>
+<!--        cards           -->
+    <div class="row">
+        <div class="col">
+            <div class="card bg-light mb-3" style="max-width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title">Funcionarios</h5>
+                <p class="card-text">
+                    <ul>
+                        <li>N. de Funcionarios: {{ total_funcionarios }}</li>
+                        <li>N. de Funcionarios de ferias : {{ total_funcionarios_ferias }}</li>
+                        <li>N. de Funcionarios com documentos pendentes: {{ total_funcionarios_doc_pendente }}</li>
+                    </ul>
+
+                </p>
+              </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card bg-light mb-3" style="max-width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title">Registro de Horas Extras</h5>
+                <p class="card-text">
+                    <ul>
+                        <li> Banco de Horas Pendentes: {{ total_hora_extra_pendente }} </li>
+                        <li> Banco de Horas Tiradas: {{ total_hora_extra_utilizada }}</li>
+                    </ul>
+
+
+                </p>
+              </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card bg-light mb-3" style="max-width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title">Documentos</h5>
+                <p class="card-text">
+                    <ul>
+                        <li> Tot func. doc ok: {{ total_funcionarios_doc_ok }}</li>
+                        <li> Tot Func. Doc Pendente: {{ total_funcionarios_doc_pendente }}</li>
+                        <li> Tot Func. faltante RG: {{ total_funcionarios_rg }}</li>
+                    </ul>
+                </p>
+              </div>
+            </div>
+        </div>
+
+    </div>
+
+
+<!--        <div class="col-sm">-->
+<!--            Olá {{ usuario.funcionario.nome }}-->
+<!--        </div>-->
+
+{% endblock%}

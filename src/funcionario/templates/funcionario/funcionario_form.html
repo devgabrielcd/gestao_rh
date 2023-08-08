@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+
+
+{% block main %}
+{{ object }}
+<form method="post">
+
+    {% csrf_token %}
+
+    {{ form|bootstrap }}
+<br>
+    <button type="submit">Salvar</button>
+</form>
+
+<a href="{% url 'create_documento'  %}" class="btn btn-primary">Novo Documento</a>
+
+<br>
+<h2>Documentos</h2>
+<ul>
+{% for documento in object.documentos_set.all %}
+    <li>
+        <a href="#">
+            {{ documento }}
+        </a>
+
+    </li>
+{% endfor %}
+</ul>
+<br>
+
+<br>
+
+<br>
+<h2>Banco de Horas</h2>
+<br>
+<ul>
+{% for registro_hora in object.registrohoraextra_set.all %}
+    <li>
+        <a href="{% url 'update_hora_extra' registro_hora.id %}">
+            {{ registro_hora.motivo }} | {{ registro_hora.horas }}
+        </a>
+
+    </li>
+{% endfor %}
+</ul>
+<!--@property em models - resultado da soma de horas extras definidos no models(funcionario)-->
+<h3>Total de horas extra: {{ object.total_hora_extra }}</h3>
+
+{% endblock %}
